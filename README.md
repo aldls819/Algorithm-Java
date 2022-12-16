@@ -1,4 +1,4 @@
 # Algorithm
 
-##Java를 사용한 알고리즘 문제풀이
-##백준, 
+Java를 활용한 알고리즘 문제풀이
+백준 swea Inflearn
