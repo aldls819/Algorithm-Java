@@ -1,4 +1,39 @@
 # Algorithm
 
-Java를 활용한 알고리즘 문제풀이
-백준 swea Inflearn softeer
+
+Repository
+ ├─ README.md
+ │
+ ├─ Online Judge1
+ │        │
+ │        ├─ member1
+ │        │     │
+ │        │     ├── week1
+ │        │     │     ├──problemNumber.java
+ │        │     │     ├── ...
+ │        │     │
+ │        │     ├── week2
+ │        │     │     ├──problemNumber.java
+ │        │     │     ├── ...
+ │        │     │
+ │        │     ├── ...
+ │        │    
+ │        ├─ member2
+ │        │     │
+ │        │     ├── week1
+ │        │     │     ├──problemNumber.java
+ │        │     │     ├── ...
+ │        │     │
+ │        │     ├── week2
+ │        │     │     ├──problemNumber.java
+ │        │     │     ├── ...
+ │        │     │
+ │        │     ├── ...
+ │        │    
+ │        ├─ ...
+ │            
+ ├─ Online Judge2
+ │        │
+ │        ├─ member1
+ │        │     │
+ 
