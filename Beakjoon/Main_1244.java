@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_1244 {
+public class Main_1244_스위치켜고끄기 {
 	
 	/*
 	 * 스위치 번호 1부터 연속적으로 붙어있음
