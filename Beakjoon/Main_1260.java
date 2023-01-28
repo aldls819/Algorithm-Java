@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_1260 {
+public class Main_1260_DFS와BFS {
 
 	//양방향 그래프를 생성해주기 위한 list 생성
 	static List<Integer>[] adjList;
