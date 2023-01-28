@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Main_1697{
+public class Main_1697_숨바꼭질 {
 
 	/*
 	 * 수빈이의 현재 위치에서
