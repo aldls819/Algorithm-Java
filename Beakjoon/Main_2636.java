@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_2636 {
+public class Main_2636_ {
 
 	/*
 	 * 공기와 닿아있는 치즈는 한시간 간격으로 녹음 치즈 내부의 0은 치즈를 녹이지 못 함 치즈가 모두 녹는데 걸린 시간 + 다 녹기 한시간 전
