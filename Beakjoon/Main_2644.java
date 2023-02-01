@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_2644 {
+public class Main_2644_촌수계 {
 	
 	/*
 	 * 촌수를 계산해야 하는 두 사람의 번호를 기준으로
