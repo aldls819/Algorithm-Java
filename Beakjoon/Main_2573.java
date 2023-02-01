@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.nio.Buffer;
 import java.util.*;
 
-public class Main_2573 {
+public class Main_2573_ {
 
     /*
     4방탐색 후 0의 개수만큼
