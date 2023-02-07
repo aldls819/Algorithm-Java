@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main_2667_단지 {
 
 	/*
 	 * 집 있는 것 1 없는 것 0 연결된 애들 몇갠지 세는 문제 4방탐색 총 단지 수 출력 후 각 단지내 집의 수를 오름차순으로 정렬
