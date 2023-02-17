@@ -1,8 +1,6 @@
-# Algorithm
+#Algorithm Java Coding Test
 
-## 알고리즘 문제 풀이
-
-:sparkles:
+** Java로 알고리즘 코드를 풀이한다 **
 
 <strong> Code review </strong>
 - 백준
