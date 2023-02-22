@@ -1,4 +1,4 @@
-# Algorithm Java Coding Test
+# :star: Algorithm Java Coding Test
 
 **Java로 알고리즘 코드를 풀이한다**
 
