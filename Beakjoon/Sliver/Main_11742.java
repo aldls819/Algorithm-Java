@@ -18,6 +18,8 @@ public class Main_11724 {
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
+        
+        list = new ArrayList<>();
 
     }
 
