@@ -1,0 +1,162 @@
+package D6;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class Solution_영준이의진짜BFS {
+	
+	//루트노드를 기준으로 작은 번호부터 탐색 진행
+	//그 다음 번호가 떨어져 있다면 둘의 공통부모까지 올라간 후
+	//진행해야 함 -> LCA 문제
+	
+	//최소 공통 조상 알고리즘
+	//트리 문제 + 최단 경로 -> LCA 부터 생각하자
+	
+	//값을 미리 저장해서 사용하지 않으면 시간초과가 발생함 -> cache 자료구조 만들자
+	//hashmap 사용하기
+	
+	private static class Node {
+		int parent, depth;
+		List<Integer> childList = new ArrayList<>();
+		
+		
+		//루트노드 초기화
+		public Node() {
+			parent = 0;
+			depth = 0;
+		}
+		
+		//나머지노드 초기화
+		public Node(List<Node> nodes, int parent) {
+			super();
+			this.parent = parent;
+			this.depth = nodes.get(parent).depth + 1;
+		}
+	}
+
+	static HashMap<Long, Integer> cache;
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int T = Integer.parseInt(br.readLine());
+		
+		for(int tc=1; tc<=T; tc++) {
+			int N = Integer.parseInt(br.readLine());
+			
+			//각 노드들의 부모 정점 입력 받기
+			//노드의 시작은 2번부터임
+			String [] arr = br.readLine().split(" ");
+			
+			//트리구조 생성
+			List<Node> nodes = new ArrayList<Node>();
+			//해시맵 초기화
+			cache = new HashMap<Long, Integer>();
+			
+			//루트노드 생성
+			nodes.add(new Node());
+			
+			for(int i=1; i<N; i++) {
+				int parent = Integer.parseInt(arr[i-1])-1;
+				//새로운 노드 생성해주기
+				nodes.add(new Node(nodes, parent));
+				//부모 노드의 자식리스트에 현재 노드 추가
+				nodes.get(parent).childList.add(i);
+			}
+			
+			Queue<Integer> q = new LinkedList<Integer>();
+			//루트 노드 넣기
+			q.add(0);
+			int to = 0;
+			long cnt = 0;
+			
+			while(!q.isEmpty()) {
+				//큐에 있는 원소 꺼내기
+				int node = q.poll();
+				//내 자식 사이즈
+				int childrenSize = nodes.get(node).childList.size();
+				//시작위치부터 내 노드까지의 lca값
+				int lca = findLCA(nodes, node, to);
+				
+				//왔다
+				cnt += nodes.get(to).depth - nodes.get(lca).depth;
+				//갔다
+				cnt += nodes.get(node).depth - nodes.get(lca).depth;
+				
+				//그 다음 숫자로 시작위치 바꾸기
+				to = node;
+				
+				//현재 노드의 자식들을 큐에 넣기
+				for(int i=0; i<childrenSize; i++) {
+					q.add(nodes.get(node).childList.get(i));
+				}
+			}
+			
+			System.out.println("#"+tc+" "+cnt);
+		}
+		
+	}
+	
+	//LCA 메소드
+	//LCA 알고리즘은 두 노드의 깊이를 동일하게 맞춰줘야 한다
+	private static int findLCA(List<Node> nodes, int a, int b) {
+		//만약 둘이 같다면 아무거나 리턴
+		if(a == b) {
+			return a;
+		}
+		
+		int depthA = nodes.get(a).depth;
+		int depthB = nodes.get(b).depth;
+		
+		//두 노드의 깊이를 맞춰줌
+		//더 깊은 노드르 위로 올리기
+		//편의상 무조건 A가 더 작은 depth를 갖도록 맞춰줌
+		if(depthA > depthB) {
+			int temp = a;
+			a = b;
+			b = temp;
+			temp = depthA;
+			depthA = depthB;
+			depthB = temp;
+		}
+		
+		//b를 위로 올리면서 a와 b를 동일한 depth로 맞춘다
+		while(depthA < depthB) {
+			//무조건 한단계씩만 올라갈 수 있음
+			b = nodes.get(b).parent;
+			depthB--;
+		}
+		return findSameParent(nodes, a, b);
+	}
+
+	//높이를 동일하게 맞췄으면 두 부모가 같아질 때까지 재귀를 돌린다
+	private static int findSameParent(List<Node> nodes, int a, int b) {
+		//두 부모가 같아지면 종료
+		if(a == b) {
+			return a;
+		}
+		
+		//이미 나온 값이라면 cache에서 꺼내다쓰기
+		long key = (long) a * 100000 + (long) b;
+		if(cache.containsKey(key)) {
+			return cache.get(key);
+		}
+		
+		a = nodes.get(a).parent;
+		b = nodes.get(b).parent;
+		
+		//같은 부모 찾을 때까지 재귀
+		int result = findSameParent(nodes, a, b);
+		
+		cache.put(key, result);
+		return result;
+	}
+
+}
